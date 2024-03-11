@@ -1,2 +1,15 @@
 #!/bin/sh
-dmenu_path | dmenu "$@" | ${SHELL:-"/bin/sh"} &
+#dmenu_path | dmenu "$@" | ${SHELL:-"/bin/sh"} &
+#dmenu_path | [ -f ~/.aliases/$(dmenu) ] && echo "~/.aliases/$(dmenu)" || echo "$(dmenu)" | echo 
+
+a=$(dmenu_path | dmenu "$@")
+${SHELL:-"/bin/sh"} & "$HOME/.aliases/$a" || { ${SHELL:-"/bin/sh"} & $a; }
+
+
+
+#print () {
+#	ts=$(echo $1 | tr -d ' ')
+#	echo $ts
+#	[ -f ~/.aliases/$1 ] && { ${SHELL:-"/bin/sh"} & "$HOME/.aliases/$ts"; } || { ${SHELL:-"/bin/sh"} & "$HOME/.aliases/$ts"; }
+#}
+#dmenu_path | dmenu "$@" | print

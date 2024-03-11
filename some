@@ -1,0 +1,1 @@
+if [ -f~/.aliases/st1 ]; then echo ~/.aliases/st fi bash.sh
